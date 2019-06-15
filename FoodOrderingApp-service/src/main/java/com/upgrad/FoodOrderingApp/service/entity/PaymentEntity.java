@@ -7,7 +7,9 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@Entity
 @Table(name = "payment", schema = "public")
+
 public class PaymentEntity implements Serializable {
     @Id
     @Column(name = "id")

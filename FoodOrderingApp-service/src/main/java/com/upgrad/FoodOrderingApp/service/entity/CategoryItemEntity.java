@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+@Entity
 @Table(name = "category_item", schema = "public")
 public class CategoryItemEntity implements Serializable {
     @Id

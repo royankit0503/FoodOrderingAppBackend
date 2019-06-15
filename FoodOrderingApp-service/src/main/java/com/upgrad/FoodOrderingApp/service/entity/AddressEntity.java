@@ -10,6 +10,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 @Table(name = "address", schema = "public")
 public class AddressEntity implements Serializable {
     @Id

@@ -10,6 +10,8 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
+@Table(name = "restaurant", schema = "public")
 public class RestaurantEntity implements Serializable {
     @Id
     @Column(name = "id")

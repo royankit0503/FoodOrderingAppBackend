@@ -10,7 +10,9 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
+@Entity
 @Table(name = "customer_auth", schema = "public")
+
 public class CustomerAuthEntity implements Serializable {
 
     @Id

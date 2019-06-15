@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 @Table(name = "customer", schema = "public")
 public class CustomerEntity implements Serializable {
 
