@@ -12,7 +12,9 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "customer_auth", schema = "public")
-
+@NamedQueries({
+        @NamedQuery(name = "customerAuthTokenByAccessToken", query = "select c from CustomerAuthEntity c where c.accessToken = :accessToken ")
+})
 public class CustomerAuthEntity implements Serializable {
 
     @Id
