@@ -6,8 +6,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import com.upgrad.FoodOrderingApp.service.entity.CustomerAuthEntity;
 
+import java.sql.Timestamp;
+
 @Service
-public class CustomerBusinessService {
+public class CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
@@ -47,5 +49,17 @@ public class CustomerBusinessService {
             }
         }
         return isUserSignedIn;
+    }
+
+    public boolean isUserSesionExpired(CustomerAuthEntity customerAuthEntity) {
+        boolean isUserSesionExpired = false;
+        if (customerAuthEntity != null && customerAuthEntity.getLoginAt() != null && customerAuthEntity.getExpiresAt() != null) {
+            if (customerAuthEntity.getLogoutAt() == null) {
+                if(customerAuthEntity.getExpiresAt().before(new Timestamp(System.currentTimeMillis()))){
+                    isUserSesionExpired = true;
+                }
+            }
+        }
+        return isUserSesionExpired;
     }
 }

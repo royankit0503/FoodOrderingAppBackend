@@ -10,6 +10,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "item", schema = "public")
+@NamedQueries({
+        @NamedQuery(name = "getItemForId", query = "select o from ItemEntity o where o.id = :itemId")
+})
+
 public class ItemEntity implements Serializable {
     @Id
     @Column(name = "id")

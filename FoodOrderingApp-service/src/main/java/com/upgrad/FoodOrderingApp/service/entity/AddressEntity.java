@@ -39,7 +39,7 @@ public class AddressEntity implements Serializable {
     @Size(max = 30)
     private String pincode;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "state_id")
     private StateEntity state;

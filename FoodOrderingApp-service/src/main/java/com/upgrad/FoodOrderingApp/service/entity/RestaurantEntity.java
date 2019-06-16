@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -34,7 +35,7 @@ public class RestaurantEntity implements Serializable {
 
     @Column(name = "customer_rating" )
     @NotNull
-    private Long customerRating;
+    private BigDecimal customerRating;
 
     @Column(name = "average_price_for_two" )
     @NotNull
@@ -91,11 +92,11 @@ public class RestaurantEntity implements Serializable {
         this.photoUrl = photoUrl;
     }
 
-    public Long getCustomerRating() {
+    public BigDecimal getCustomerRating() {
         return customerRating;
     }
 
-    public void setCustomerRating(Long customerRating) {
+    public void setCustomerRating(BigDecimal customerRating) {
         this.customerRating = customerRating;
     }
 

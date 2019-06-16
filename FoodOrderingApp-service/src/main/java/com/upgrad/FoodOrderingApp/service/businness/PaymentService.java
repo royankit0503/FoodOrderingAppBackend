@@ -13,20 +13,17 @@ import java.util.*;
 @Service
 public class PaymentService {
     @Autowired
-    private CustomerBusinessService customerBusinessService;
+    private CustomerService customerService;
 
     @Autowired
     private PaymentDao paymentDao;
 
     public List<PaymentEntity> getAllPaymentMethods(final String authorizationToken) {
 
-        CustomerAuthEntity customerAuthEntity = customerBusinessService.getCustomerAuthToken(authorizationToken);
+        CustomerAuthEntity customerAuthEntity = customerService.getCustomerAuthToken(authorizationToken);
         List<PaymentEntity> paymentEntityList = new ArrayList<PaymentEntity>();
         if(customerAuthEntity!= null ){
-            if (customerBusinessService.isUserSignedIn(customerAuthEntity)) {
                 paymentEntityList = paymentDao.getAllPaymentTypes();
-            }
-
         }
         return paymentEntityList;
     }

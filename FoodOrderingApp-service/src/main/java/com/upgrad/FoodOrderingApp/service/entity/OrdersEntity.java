@@ -8,11 +8,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Table(name = "orders", schema = "public")
+@NamedQueries({
+        @NamedQuery(name = "getAllOrdersForCustomerId", query = "select o from OrdersEntity o where o.customer.id = :customerId order by o.date desc")
+})
 public class OrdersEntity implements Serializable {
     @Id
     @Column(name = "id")
@@ -26,7 +30,7 @@ public class OrdersEntity implements Serializable {
 
     @Column(name = "bill")
     @NotNull
-    private Long bill;
+    private BigDecimal bill;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -34,7 +38,7 @@ public class OrdersEntity implements Serializable {
     private CouponEntity coupon;
 
     @Column(name = "discount ")
-    private Long discount = new Long(0);
+    private BigDecimal discount = new BigDecimal(0);
 
     @Column(name = "date ")
     @NotNull
@@ -80,11 +84,11 @@ public class OrdersEntity implements Serializable {
         this.uuid = uuid;
     }
 
-    public Long getBill() {
+    public BigDecimal getBill() {
         return bill;
     }
 
-    public void setBill(Long bill) {
+    public void setBill(BigDecimal bill) {
         this.bill = bill;
     }
 
@@ -96,11 +100,11 @@ public class OrdersEntity implements Serializable {
         this.coupon = coupon;
     }
 
-    public Long getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Long discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 
