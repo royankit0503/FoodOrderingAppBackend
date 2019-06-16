@@ -134,7 +134,8 @@ public class OrderController {
                                 itemQuantityResponseItem.setId(UUID.fromString(itemEntity.getUuid()));
                                 itemQuantityResponseItem.setItemName(itemEntity.getItemName());
                                 itemQuantityResponseItem.setItemPrice(itemEntity.getPrice());
-                                itemQuantityResponseItem.setType(ItemQuantityResponseItem.TypeEnum.fromValue(itemEntity.getType()));
+                                String itemTypeEnumVal = (("0" == itemEntity.getType())? "VEG" : "NON_VEG");
+                                itemQuantityResponseItem.setType(ItemQuantityResponseItem.TypeEnum.fromValue(itemTypeEnumVal));
                             }
                             itemQuantityResponse.setItem(itemQuantityResponseItem);
                             itemQuantityResponse.setPrice(eachOrderItemEntity.getPrice());
